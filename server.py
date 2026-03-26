@@ -54,4 +54,5 @@ async def get_profile(username: str) -> str:
         return f"Name: {data.get('name')}\nBio: {data.get('bio')}\nPublic repos: {data.get('public_repos')}\nFollowers: {data.get('followers')}"
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    port = int(os.environ.get("PORT", 8000))
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)
