@@ -53,9 +53,12 @@ async def get_profile(username: str) -> str:
         data = r.json()
         return f"Name: {data.get('name')}\nBio: {data.get('bio')}\nPublic repos: {data.get('public_repos')}\nFollowers: {data.get('followers')}"
 
-app = mcp.get_asgi_app()
-
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(
+        "server:mcp",
+        host="0.0.0.0",
+        port=port,
+        factory=False
+    )
