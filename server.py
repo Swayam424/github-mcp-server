@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-mcp = FastMCP("github-mcp", stateless_http=True)
+mcp = FastMCP("github-mcp", stateless_http=True, host="0.0.0.0")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 HEADERS = {
     "Authorization": f"Bearer {GITHUB_TOKEN}",
@@ -60,4 +60,3 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port,
                 forwarded_allow_ips="*",
-                proxy_headers=True)
