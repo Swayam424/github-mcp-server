@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 mcp = FastMCP("github-mcp", stateless_http=True)
-mcp.settings.allowed_hosts = ["*"]
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 HEADERS = {
     "Authorization": f"Bearer {GITHUB_TOKEN}",
